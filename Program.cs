@@ -13,11 +13,16 @@ app.UseSwaggerUI();
 // Konfigurera HTTP-begäranspipeline
 app.UseHttpsRedirection();
 
+// Lägg till en root-rutt
+app.MapGet("/", () => "Välkommen till Väderprognos API!");
+
+// Definiera en array av väderbeskrivningar
 var summaries = new[]
 {
     "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
 };
 
+// Definiera endpoint för väderprognos
 app.MapGet("/weatherforecast", () =>
 {
     var forecast = Enumerable.Range(1, 5).Select(index =>
